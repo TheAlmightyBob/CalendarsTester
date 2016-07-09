@@ -1,7 +1,7 @@
 ﻿{
   "dependencies": {
     "Acr.UserDialogs": "5.3.0",
-    "CClarke.Plugin.Calendars": "0.6.0-beta",
+    "CClarke.Plugin.Calendars": "0.6.10-beta",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
     "Xamarin.Forms": "2.3.0.107"
   },
