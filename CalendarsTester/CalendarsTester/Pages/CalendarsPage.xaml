@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Controls="clr-namespace:CalendarsTester.Controls"
+             xmlns:Behaviors="clr-namespace:CalendarsTester.Behaviors"
+					   x:Class="CalendarsTester.Pages.CalendarsPage"
+             Title="{Binding Title}">
+  <ContentPage.ToolbarItems>
+    <Controls:ToolbarItemEx Name="Refresh" ToolbarItemType="Refresh" Command="{Binding FetchCalendarsCommand}">
+      <!--<ToolbarItem.Icon>
+        <OnPlatform x:TypeArguments="FileImageSource" WinPhone="Toolkit.Content/ApplicationBar.Select.png"/>
+      </ToolbarItem.Icon>-->
+    </Controls:ToolbarItemEx>
+    <Controls:ToolbarItemEx Name="Add" ToolbarItemType="Add" Command="{Binding AddCalendarCommand}"/>
+    <Controls:ToolbarItemEx Name="Search" ToolbarItemType="Search" Command="{Binding GoToIDCommand}"/>
+  </ContentPage.ToolbarItems>
+
+  <Grid>
+    <ListView x:Name="Calendars"
+              ItemsSource="{Binding GroupedCalendars}"
+              IsGroupingEnabled="True"
+              GroupDisplayBinding="{Binding Key}"
+              IsPullToRefreshEnabled="True"
+              RefreshCommand="{Binding FetchCalendarsCommand}"
+              IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+              Behaviors:ListViewTap.Command="{Binding SelectCalendarCommand}">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <TextCell Text="{Binding Name}">
+            <TextCell.ContextActions>
+              <MenuItem Text="Edit"
+                        Command="{Binding Source={x:Reference Calendars}, Path=BindingContext.EditCalendarCommand}"
+                        CommandParameter="{Binding .}"/>
+              <MenuItem Text="Delete"
+                        IsDestructive="True"
+                        Command="{Binding Source={x:Reference Calendars}, Path=BindingContext.DeleteCalendarCommand}"
+                        CommandParameter="{Binding .}"/>
+            </TextCell.ContextActions>
+          </TextCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </Grid>
+</ContentPage>

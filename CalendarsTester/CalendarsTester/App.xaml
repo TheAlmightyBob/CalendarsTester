@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Converters="clr-namespace:CalendarsTester.Converters;assembly=CalendarsTester"
+             x:Class="CalendarsTester.App">
+  <Application.Resources>
+    <ResourceDictionary>
+
+      <!-- STYLES -->
+
+      <Style x:Key="PropertyLabel" TargetType="Label">
+        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        <Setter Property="VerticalTextAlignment" Value="Center"/>
+        <Setter Property="LineBreakMode" Value="NoWrap"/>
+      </Style>
+
+      <!-- CONVERTERS -->
+      <Converters:BooleanInverseConverter x:Key="BooleanInverseConverter"/>
+      <Converters:StringToColorConverter x:Key="StringToColorConverter"/>
+      <Converters:TimeRangeConverter x:Key="TimeRangeConverter"/>
+      <Converters:EnumToIntConverter x:Key="EnumToIntConverter"/>
+    </ResourceDictionary>
+  </Application.Resources>
+</Application>

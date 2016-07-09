@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+					   x:Class="CalendarsTester.Pages.DateTimeRangePage"
+             Title="{Binding Title}">
+  <Grid Padding="5">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="auto"/>
+      <ColumnDefinition Width="*"/>
+      <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="auto"/>
+      <RowDefinition Height="auto"/>
+      <RowDefinition Height="auto"/>
+      <RowDefinition Height="auto"/>
+    </Grid.RowDefinitions>
+
+    <Label Grid.Row="1" Text="Start" Style="{StaticResource PropertyLabel}"/>
+    <DatePicker x:Name="Start"
+                Grid.Row="1" Grid.Column="1"
+                Date="{Binding StartDate}"/>
+    <TimePicker Grid.Row="1" Grid.Column="2"
+                Time="{Binding StartTime}"/>
+
+    <Label Grid.Row="2" Text="End" Style="{StaticResource PropertyLabel}"/>
+    <DatePicker x:Name="End"
+                Grid.Row="2" Grid.Column="1"
+                Date="{Binding EndDate}"/>
+    <TimePicker Grid.Row="2" Grid.Column="2"
+                Time="{Binding EndTime}"/>
+
+    <Button x:Name="ContinueButton"
+            Grid.Row="3" Grid.ColumnSpan="3"
+            Text="Continue"
+            Command="{Binding GoToEventsCommand}"/>
+  </Grid>
+</ContentPage>

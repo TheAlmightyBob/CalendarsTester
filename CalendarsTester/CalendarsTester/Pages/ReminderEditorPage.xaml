@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Controls="clr-namespace:CalendarsTester.Controls"
+             xmlns:Behaviors="clr-namespace:CalendarsTester.Behaviors"
+             x:Class="CalendarsTester.Pages.ReminderEditorPage"
+             Title="{Binding Title}">
+  <ContentPage.ToolbarItems>
+    <Controls:ToolbarItemEx Text="Done" ToolbarItemType="Done" Command="{Binding DoneCommand}"/>
+    <Controls:ToolbarItemEx Text="Cancel" ToolbarItemType="Cancel" Command="{Binding CancelCommand}"/>
+  </ContentPage.ToolbarItems>
+
+  <StackLayout Orientation="Vertical" Spacing="10" Padding="5">
+    <StackLayout Orientation="Horizontal">
+      <Entry Text="{Binding Value}" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
+      <Controls:PickerEx ItemsSource="{Binding UnitOptions}"
+                         HorizontalOptions="FillAndExpand"
+                         SelectedIndex="{Binding Units, Mode=TwoWay, Converter={StaticResource EnumToIntConverter}}"/>
+      <Label Text="before start time" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
+    </StackLayout>
+    <StackLayout Orientation="Horizontal">
+      <Label Text="Android Notification Method:" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
+      <Controls:PickerEx ItemsSource="{Binding MethodOptions}"
+                         HorizontalOptions="FillAndExpand"
+                         SelectedIndex="{Binding Method, Mode=TwoWay, Converter={StaticResource EnumToIntConverter}}"/>
+    </StackLayout>
+  </StackLayout>
+</ContentPage>

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+			       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Controls="clr-namespace:CalendarsTester.Controls"
+             xmlns:Behaviors="clr-namespace:CalendarsTester.Behaviors"
+			       x:Class="CalendarsTester.Pages.EventsPage"
+             Title="{Binding Title}">
+  <ContentPage.ToolbarItems>
+    <Controls:ToolbarItemEx Name="Refresh" ToolbarItemType="Refresh" Command="{Binding FetchEventsCommand}">
+      <!--<ToolbarItem.Icon>
+        <OnPlatform x:TypeArguments="FileImageSource" WinPhone="Toolkit.Content/ApplicationBar.Select.png"/>
+      </ToolbarItem.Icon>-->
+    </Controls:ToolbarItemEx>
+    <Controls:ToolbarItemEx Name="Add" ToolbarItemType="Add" Command="{Binding AddEventCommand}"/>
+    <Controls:ToolbarItemEx Name="Search" ToolbarItemType="Search" Command="{Binding GoToIDCommand}"/>
+  </ContentPage.ToolbarItems>
+
+  <ListView x:Name="Events"
+            ItemsSource="{Binding EventsByDay}"
+            Behaviors:ListViewTap.Command="{Binding EditEventCommand}"
+            IsGroupingEnabled="True"
+            GroupDisplayBinding="{Binding Key, StringFormat='{0:ddd, MMM d}'}"
+            IsPullToRefreshEnabled="True"
+            RefreshCommand="{Binding FetchEventsCommand}"
+            IsRefreshing="{Binding IsBusy, Mode=OneWay}">
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <TextCell Text="{Binding Name}" Detail="{Binding ., Converter={StaticResource TimeRangeConverter}}">
+          <TextCell.ContextActions>
+            <MenuItem Text="Add Reminder"
+                      Command="{Binding Source={x:Reference Events}, Path=BindingContext.AddReminderCommand}"
+                      CommandParameter="{Binding .}"/>
+            <MenuItem Text="Delete"
+                      IsDestructive="True"
+                      Command="{Binding Source={x:Reference Events}, Path=BindingContext.DeleteEventCommand}"
+                      CommandParameter="{Binding .}"/>
+          </TextCell.ContextActions>
+        </TextCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+  </ListView>
+</ContentPage>

@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Controls="clr-namespace:CalendarsTester.Controls;assembly=CalendarsTester"
+             xmlns:Behaviors="clr-namespace:CalendarsTester.Behaviors;assembly=CalendarsTester"
+             x:Class="CalendarsTester.Pages.CalendarEditorPage"
+             Title="{Binding Title}">
+  <ContentPage.ToolbarItems>
+    <Controls:ToolbarItemEx Text="Done" ToolbarItemType="Done" Command="{Binding DoneCommand}">
+      <Controls:ToolbarItemEx.Icon>
+        <OnPlatform x:TypeArguments="FileImageSource" WinPhone="Toolkit.Content/ApplicationBar.Check.png"/>
+      </Controls:ToolbarItemEx.Icon>
+    </Controls:ToolbarItemEx>
+    <Controls:ToolbarItemEx Text="Cancel" ToolbarItemType="Cancel" Command="{Binding CancelCommand}">
+      <Controls:ToolbarItemEx.Icon>
+        <OnPlatform x:TypeArguments="FileImageSource" WinPhone="Toolkit.Content/ApplicationBar.Cancel.png"/>
+      </Controls:ToolbarItemEx.Icon>
+    </Controls:ToolbarItemEx>
+  </ContentPage.ToolbarItems>
+  
+  <ContentPage.Behaviors>
+    <Behaviors:InitialFocusBehavior FocusElement="{x:Reference Name=NameEntry}" IsEnabled="{Binding IsCreating}"/>
+  </ContentPage.Behaviors>
+
+  <StackLayout Padding="5">
+    <Entry x:Name="NameEntry"
+           Placeholder="Calendar Name"
+           Text="{Binding CalendarName}"
+           IsEnabled="{Binding Calendar.CanEditCalendar}"/>
+
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+      <Entry Placeholder="Color (optional)"
+             Text="{Binding CalendarColor}"
+             IsEnabled="{Binding Calendar.CanEditCalendar}"/>
+      <BoxView Grid.Column="1"
+               HeightRequest="20"
+               BackgroundColor="{Binding CalendarColor, Converter={StaticResource StringToColorConverter}}"/>
+    </Grid>
+
+    <Grid IsVisible="{Binding IsCreating, Converter={StaticResource BooleanInverseConverter}}">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="auto"/>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="auto"/>
+      </Grid.ColumnDefinitions>
+      <Label Text="ID:" VerticalOptions="CenterAndExpand"/>
+      <Entry Grid.Column="1" Text="{Binding Calendar.ExternalID}" IsEnabled="False"/>
+      <Button Grid.Column="2" Text="Copy" Command="{Binding CopyIDCommand}"/>
+    </Grid>
+  </StackLayout>
+</ContentPage>

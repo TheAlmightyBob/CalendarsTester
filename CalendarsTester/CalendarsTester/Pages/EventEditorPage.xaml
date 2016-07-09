@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Controls="clr-namespace:CalendarsTester.Controls"
+             xmlns:Behaviors="clr-namespace:CalendarsTester.Behaviors"
+             x:Class="CalendarsTester.Pages.EventEditorPage"
+             Title="{Binding Title}">
+  <ContentPage.ToolbarItems>
+    <Controls:ToolbarItemEx Text="Done" ToolbarItemType="Done" Command="{Binding DoneCommand}" >
+      <!--<Controls:ToolbarItemEx.Icon>
+        <OnPlatform x:TypeArguments="FileImageSource" WinPhone="Toolkit.Content/ApplicationBar.Check.png"/>
+      </Controls:ToolbarItemEx.Icon>-->
+    </Controls:ToolbarItemEx>
+    <Controls:ToolbarItemEx Text="Cancel" ToolbarItemType="Cancel" Command="{Binding CancelCommand}">
+      <!--<Controls:ToolbarItemEx.Icon>
+        <OnPlatform x:TypeArguments="FileImageSource" WinPhone="Toolkit.Content/ApplicationBar.Cancel.png"/>
+      </Controls:ToolbarItemEx.Icon>-->
+    </Controls:ToolbarItemEx>
+  </ContentPage.ToolbarItems>
+
+  <ContentPage.Behaviors>
+    <Behaviors:InitialFocusBehavior FocusElement="{x:Reference Name=NameEntry}" IsEnabled="{Binding IsCreating}"/>
+  </ContentPage.Behaviors>
+
+  <ScrollView>
+    <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Padding="5">
+      <Entry Placeholder="Name"
+             Text="{Binding Name}"
+             x:Name="NameEntry"
+             IsEnabled="{Binding CanEdit}"/>
+
+      <Grid Padding="5">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="auto"/>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="auto"/>
+          <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Text="Start" Style="{StaticResource PropertyLabel}"/>
+        <DatePicker Grid.Row="0" Grid.Column="1"
+                    Date="{Binding StartDate}"
+                    IsEnabled="{Binding CanEdit}"/>
+        <TimePicker Grid.Row="0" Grid.Column="2"
+                    Time="{Binding StartTime}"
+                    IsEnabled="{Binding CanEdit}"/>
+
+        <Label Grid.Row="1" Text="End" Style="{StaticResource PropertyLabel}"/>
+        <DatePicker Grid.Row="1" Grid.Column="1"
+                    Date="{Binding EndDate}"
+                    IsEnabled="{Binding CanEdit}"/>
+        <TimePicker Grid.Row="1" Grid.Column="2"
+                    Time="{Binding EndTime}"
+                    IsEnabled="{Binding CanEdit}"/>
+
+        <Label Grid.Row="2" Text="All Day" Style="{StaticResource PropertyLabel}"/>
+        <Switch Grid.Row="2" Grid.Column="1"
+                IsToggled="{Binding AllDay}"
+                IsEnabled="{Binding CanEdit}"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="Start"/>
+      </Grid>
+
+      <Label Text="Location:"/>
+      <Editor Text="{Binding Location}"
+              IsEnabled="{Binding CanEdit}"/>
+
+      <Label Text="Description:"/>
+      <Editor Text="{Binding Description}"
+              IsEnabled="{Binding CanEdit}" VerticalOptions="FillAndExpand"/>
+
+      <!--<StackLayout Orientation="Horizontal" IsVisible="{Binding IsCreating, Converter={StaticResource BooleanInverseConverter}}">
+        <Label Text="ID:" VerticalOptions="CenterAndExpand"/>
+        <Entry Text="{Binding Event.ExternalID}" IsEnabled="False"/>
+        <Button Text="Copy" Command="{Binding CopyIDCommand}"/>
+      </StackLayout>-->
+
+      <Grid IsVisible="{Binding IsCreating, Converter={StaticResource BooleanInverseConverter}}">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="auto"/>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <Label Text="ID:" VerticalOptions="CenterAndExpand"/>
+        <Entry Grid.Column="1" Text="{Binding Event.ExternalID}" IsEnabled="False"/>
+        <Button Grid.Column="2" Text="Copy" Command="{Binding CopyIDCommand}"/>
+      </Grid>
+
+      <Button Text="Delete"
+              TextColor="Red"
+              Command="{Binding DeleteCommand}"
+              IsVisible="{Binding CanDelete}"
+              VerticalOptions="EndAndExpand"/>
+    </StackLayout>
+  </ScrollView>
+</ContentPage>
