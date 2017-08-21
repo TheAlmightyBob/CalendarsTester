@@ -51,5 +51,15 @@
       <Entry Grid.Column="1" Text="{Binding Calendar.ExternalID}" IsEnabled="False"/>
       <Button Grid.Column="2" Text="Copy" Command="{Binding CopyIDCommand}"/>
     </Grid>
-  </StackLayout>
+
+    <Grid IsVisible="{Binding IsCreating, Converter={StaticResource BooleanInverseConverter}}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <Label Text="Account:" VerticalOptions="CenterAndExpand"/>
+        <Entry Grid.Column="1" Text="{Binding Calendar.AccountName}" IsEnabled="False"/>
+    </Grid>
+
+    </StackLayout>
 </ContentPage>
