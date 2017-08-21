@@ -48,5 +48,7 @@
     </array>
     <key>UILaunchStoryboardName</key>
     <string>LaunchScreen</string>
+    <key>NSCalendarsUsageDescription</key>
+    <string>This entire app is about working with the device calendar, so...</string>
   </dict>
 </plist>
