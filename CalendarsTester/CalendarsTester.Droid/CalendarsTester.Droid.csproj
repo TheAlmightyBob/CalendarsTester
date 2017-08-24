@@ -76,11 +76,11 @@
     </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
-    <Reference Include="Plugin.Calendars, Version=0.6.37.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\CClarke.Plugin.Calendars.0.6.37-beta\lib\MonoAndroid10\Plugin.Calendars.dll</HintPath>
+    <Reference Include="Plugin.Calendars, Version=0.6.33.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\CClarke.Plugin.Calendars.0.6.33-beta\lib\MonoAndroid10\Plugin.Calendars.dll</HintPath>
     </Reference>
-    <Reference Include="Plugin.Calendars.Abstractions, Version=0.6.37.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\CClarke.Plugin.Calendars.0.6.37-beta\lib\MonoAndroid10\Plugin.Calendars.Abstractions.dll</HintPath>
+    <Reference Include="Plugin.Calendars.Abstractions, Version=0.6.33.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\CClarke.Plugin.Calendars.0.6.33-beta\lib\MonoAndroid10\Plugin.Calendars.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="Splat, Version=1.6.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Splat.1.6.2\lib\monoandroid\Splat.dll</HintPath>
