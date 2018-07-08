@@ -18,7 +18,7 @@
     <!--Built in Cells-->
     <ListView.ItemTemplate>
         <DataTemplate>
-                <TextCell Text="{Binding TimeBefore, StringFormat='{0:c} before'}">
+                <TextCell Text="{Binding TimeBefore, Converter={StaticResource TimeBeforeConverter}">
                     <TextCell.ContextActions>
                         <MenuItem Text="Delete"
                                   IsDestructive="True"

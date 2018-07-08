@@ -19,6 +19,7 @@
       <Converters:StringToColorConverter x:Key="StringToColorConverter"/>
       <Converters:TimeRangeConverter x:Key="TimeRangeConverter"/>
       <Converters:EnumToIntConverter x:Key="EnumToIntConverter"/>
+      <Converters:TimeBeforeConverter x:Key="TimeBeforeConverter"/>
     </ResourceDictionary>
   </Application.Resources>
 </Application>
