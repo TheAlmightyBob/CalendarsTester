@@ -79,12 +79,7 @@ namespace CalendarsTester.Core.ViewModels
                     if (_reminder == null)
                         return;
 
-                    if (_reminder.TimeBefore.Seconds > 0)
-                    {
-                        Value = _reminder.TimeBefore.TotalSeconds.ToString();
-                        Units = TimeUnits.Seconds;
-                    }
-                    else if (_reminder.TimeBefore.Minutes > 0)
+                    if (_reminder.TimeBefore.Minutes > 0)
                     {
                         Value = _reminder.TimeBefore.TotalMinutes.ToString();
                         Units = TimeUnits.Minutes;
@@ -131,8 +126,6 @@ namespace CalendarsTester.Core.ViewModels
 
             switch (units)
             {
-                case TimeUnits.Seconds:
-                    return TimeSpan.FromSeconds(value);
                 case TimeUnits.Minutes:
                     return TimeSpan.FromMinutes(value);
                 case TimeUnits.Hours:

@@ -8,7 +8,6 @@ namespace CalendarsTester.Core.Enums
 {
     public enum TimeUnits
     {
-        Seconds,
         Minutes,
         Hours,
         Days
