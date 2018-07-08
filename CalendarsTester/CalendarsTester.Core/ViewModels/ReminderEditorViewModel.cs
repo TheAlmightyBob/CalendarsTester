@@ -16,6 +16,8 @@ namespace CalendarsTester.Core.ViewModels
         private TimeUnits _units = TimeUnits.Minutes;
         private CalendarReminderMethod _method;
 
+        private CalendarEventReminder _reminder;
+
         #endregion
 
         #region Properties
@@ -65,15 +67,53 @@ namespace CalendarsTester.Core.ViewModels
 
         public IList<string> MethodOptions { get; } = Enum.GetNames(typeof(CalendarReminderMethod));
 
-        public CalendarEventReminder Reminder { get; private set; }
+        public CalendarEventReminder Reminder
+        {
+            get { return _reminder; }
+            set
+            {
+                if (_reminder != value)
+                {
+                    _reminder = value;
 
-        public ICommand DoneCommand => new Command(Done);
+                    if (_reminder == null)
+                        return;
+
+                    if (_reminder.TimeBefore.Seconds > 0)
+                    {
+                        Value = _reminder.TimeBefore.TotalSeconds.ToString();
+                        Units = TimeUnits.Seconds;
+                    }
+                    else if (_reminder.TimeBefore.Minutes > 0)
+                    {
+                        Value = _reminder.TimeBefore.TotalMinutes.ToString();
+                        Units = TimeUnits.Minutes;
+                    }
+                    else if (_reminder.TimeBefore.Hours > 0)
+                    {
+                        Value = _reminder.TimeBefore.TotalHours.ToString();
+                        Units = TimeUnits.Hours;
+                    }
+                    else if (_reminder.TimeBefore.Days > 0)
+                    {
+                        Value = _reminder.TimeBefore.TotalDays.ToString();
+                        Units = TimeUnits.Days;
+                    }
+
+                    Method = _reminder.Method;
+                }
+            }
+        }
+
+        public bool CanEdit { get; set; } = true;
+
+        public ICommand DoneCommand => new Command(Done, () => CanEdit);
 
         #endregion
 
         protected override void Done()
         {
-            Reminder = new CalendarEventReminder
+            _reminder = new CalendarEventReminder
             {
                 TimeBefore = GetTimeSpan(_value, _units),
                 Method = Method
@@ -84,9 +124,7 @@ namespace CalendarsTester.Core.ViewModels
 
         private static TimeSpan GetTimeSpan(string strValue, TimeUnits units)
         {
-            double value;
-
-            if (!double.TryParse(strValue, out value))
+            if (!double.TryParse(strValue, out double value))
             {
                 return TimeSpan.Zero;
             }

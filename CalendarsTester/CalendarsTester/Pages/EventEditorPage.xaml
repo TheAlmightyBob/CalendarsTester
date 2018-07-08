@@ -72,11 +72,7 @@
       <Editor Text="{Binding Description}"
               IsEnabled="{Binding CanEdit}" VerticalOptions="FillAndExpand"/>
 
-      <!--<StackLayout Orientation="Horizontal" IsVisible="{Binding IsCreating, Converter={StaticResource BooleanInverseConverter}}">
-        <Label Text="ID:" VerticalOptions="CenterAndExpand"/>
-        <Entry Text="{Binding Event.ExternalID}" IsEnabled="False"/>
-        <Button Text="Copy" Command="{Binding CopyIDCommand}"/>
-      </StackLayout>-->
+      <Button Text="Reminders" Command="{Binding EditRemindersCommand}"/>
 
       <Grid IsVisible="{Binding IsCreating, Converter={StaticResource BooleanInverseConverter}}">
         <Grid.ColumnDefinitions>

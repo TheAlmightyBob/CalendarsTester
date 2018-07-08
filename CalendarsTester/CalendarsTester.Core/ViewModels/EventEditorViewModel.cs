@@ -5,6 +5,9 @@ using CalendarsTester.Core.Helpers;
 using Xamarin.Forms;
 using Plugin.Calendars.Abstractions;
 using CalendarsTester.Core.Services;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace CalendarsTester.Core.ViewModels
 {
@@ -20,6 +23,7 @@ namespace CalendarsTester.Core.ViewModels
         private TimeSpan _startTime;
         private TimeSpan _endTime;
         private bool _allDay;
+        private IList<CalendarEventReminder> _reminders;
 
         private CalendarEvent _event;
 
@@ -153,6 +157,8 @@ namespace CalendarsTester.Core.ViewModels
                     StartTime = _event.Start.TimeOfDay;
                     EndTime = _event.End.TimeOfDay;
                     AllDay = _event.AllDay;
+
+                    _reminders = _event.Reminders;
                 }
             }
         }
@@ -163,6 +169,7 @@ namespace CalendarsTester.Core.ViewModels
 
         public ICommand DoneCommand { get { return _doneCommand; } }
         public ICommand CopyIDCommand => new Command(CopyID, () => !string.IsNullOrEmpty(_event?.ExternalID));
+        public ICommand EditRemindersCommand => new Command(EditReminders);
 
         #endregion
 
@@ -209,6 +216,8 @@ namespace CalendarsTester.Core.ViewModels
             _event.End = end;
             _event.AllDay = AllDay;
 
+            _event.Reminders = _reminders;
+
             Navigator.PopModalAsync();
         }
 
@@ -218,6 +227,27 @@ namespace CalendarsTester.Core.ViewModels
             if (clipboard != null && !string.IsNullOrEmpty(_event?.ExternalID))
             {
                 clipboard.CopyToClipboard(_event.ExternalID);
+            }
+        }
+
+        private async void EditReminders()
+        {
+            try
+            {
+                var remindersVM = await Navigator.PushModalAndWaitAsync<RemindersViewModel>(vm =>
+                {
+                    vm.Reminders = new ObservableCollection<CalendarEventReminder>(_reminders ?? Enumerable.Empty<CalendarEventReminder>());
+                    vm.CanEdit = CanEdit;
+                });
+
+                if (remindersVM.Result != ModalResult.Canceled)
+                {
+                    _reminders = remindersVM.Reminders;
+                }
+            }
+            catch (Exception ex)
+            {
+                ReportError(ex);
             }
         }
 

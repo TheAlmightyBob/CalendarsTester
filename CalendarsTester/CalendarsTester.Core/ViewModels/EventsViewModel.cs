@@ -170,10 +170,8 @@ namespace CalendarsTester.Core.ViewModels
                 
                 if (reminderVM.Result != ModalResult.Canceled)
                 {
-                    if (!(await CrossCalendars.Current.AddEventReminderAsync(ev, reminderVM.Reminder)))
-                    {
-                        ReportMessage("Unable to add reminder", string.Empty);
-                    }
+                    await CrossCalendars.Current.AddEventReminderAsync(ev, reminderVM.Reminder);
+                    FetchEvents();
                 }
             }
             catch (Exception ex)

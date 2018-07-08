@@ -55,6 +55,7 @@
     <Compile Include="ViewModels\EventsViewModel.cs" />
     <Compile Include="ViewModels\CalendarEditorViewModel.cs" />
     <Compile Include="ViewModels\ReminderEditorViewModel.cs" />
+    <Compile Include="ViewModels\RemindersViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Acr.UserDialogs, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -65,11 +66,11 @@
       <HintPath>..\..\packages\Acr.UserDialogs.5.3.0\lib\portable-win+net45+wp8+win8+wpa81\Acr.UserDialogs.Interface.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Plugin.Calendars, Version=0.6.64.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\CClarke.Plugin.Calendars.0.6.64-beta\lib\netstandard1.0\Plugin.Calendars.dll</HintPath>
+    <Reference Include="Plugin.Calendars, Version=0.7.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\CClarke.Plugin.Calendars.0.7.1-beta\lib\netstandard1.0\Plugin.Calendars.dll</HintPath>
     </Reference>
-    <Reference Include="Plugin.Calendars.Abstractions, Version=0.6.64.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\CClarke.Plugin.Calendars.0.6.64-beta\lib\netstandard1.0\Plugin.Calendars.Abstractions.dll</HintPath>
+    <Reference Include="Plugin.Calendars.Abstractions, Version=0.7.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\CClarke.Plugin.Calendars.0.7.1-beta\lib\netstandard1.0\Plugin.Calendars.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="Splat, Version=1.6.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Splat.1.6.2\lib\Portable-net45+win+wpa81+wp80\Splat.dll</HintPath>

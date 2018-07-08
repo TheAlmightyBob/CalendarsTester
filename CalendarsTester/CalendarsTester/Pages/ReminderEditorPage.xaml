@@ -12,17 +12,22 @@
 
   <StackLayout Orientation="Vertical" Spacing="10" Padding="5">
     <StackLayout Orientation="Horizontal">
-      <Entry Text="{Binding Value}" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
+      <Entry Text="{Binding Value}"
+             Keyboard="Numeric"
+             HorizontalOptions="FillAndExpand"
+             IsEnabled="{Binding CanEdit}"/>
       <Controls:PickerEx ItemsSource="{Binding UnitOptions}"
                          HorizontalOptions="FillAndExpand"
-                         SelectedIndex="{Binding Units, Mode=TwoWay, Converter={StaticResource EnumToIntConverter}}"/>
+                         SelectedIndex="{Binding Units, Mode=TwoWay, Converter={StaticResource EnumToIntConverter}}"
+                         IsEnabled="{Binding CanEdit}"/>
       <Label Text="before start time" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
     </StackLayout>
     <StackLayout Orientation="Horizontal">
       <Label Text="Android Notification Method:" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
       <Controls:PickerEx ItemsSource="{Binding MethodOptions}"
                          HorizontalOptions="FillAndExpand"
-                         SelectedIndex="{Binding Method, Mode=TwoWay, Converter={StaticResource EnumToIntConverter}}"/>
+                         SelectedIndex="{Binding Method, Mode=TwoWay, Converter={StaticResource EnumToIntConverter}}"
+                         IsEnabled="{Binding CanEdit}"/>
     </StackLayout>
   </StackLayout>
 </ContentPage>

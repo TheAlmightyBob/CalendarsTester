@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Controls="clr-namespace:CalendarsTester.Controls"
+             xmlns:Behaviors="clr-namespace:CalendarsTester.Behaviors"
+             x:Class="CalendarsTester.Pages.RemindersPage"
+             Title="{Binding Title}">
+    <ContentPage.ToolbarItems>
+        <Controls:ToolbarItemEx Text="Done" ToolbarItemType="Done" Command="{Binding DoneCommand}" />
+        <Controls:ToolbarItemEx Name="Add" ToolbarItemType="Add" Command="{Binding AddReminderCommand}"/>
+        <Controls:ToolbarItemEx Text="Cancel" ToolbarItemType="Cancel" Command="{Binding CancelCommand}"/>
+    </ContentPage.ToolbarItems>
+
+    <ListView x:Name="Reminders"
+            ItemsSource="{Binding Reminders}"
+            Behaviors:ListViewTap.Command="{Binding EditReminderCommand}">
+            
+    <!--Built in Cells-->
+    <ListView.ItemTemplate>
+        <DataTemplate>
+                <TextCell Text="{Binding TimeBefore, StringFormat='{0:c} before'}">
+                    <TextCell.ContextActions>
+                        <MenuItem Text="Delete"
+                                  IsDestructive="True"
+                                  Command="{Binding Source={x:Reference Reminders}, Path=BindingContext.DeleteReminderCommand}"
+                                  CommandParameter="{Binding .}"/>
+                    </TextCell.ContextActions>
+                </TextCell>
+            </DataTemplate>
+    </ListView.ItemTemplate>
+    
+    <!--Custom View Cells-->
+    <!--
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <ViewCell>
+          <StackLayout>
+            <Label Text="{Binding Text}" 
+                   Style="{DynamicResource ListItemTextStyle}" />
+            <Label Text="{Binding Detail}" 
+                   Style="{DynamicResource ListItemDetailTextStyle}"/>
+          </StackLayout>
+        </ViewCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+    -->
+  </ListView>
+</ContentPage>

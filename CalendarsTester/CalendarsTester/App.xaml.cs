@@ -34,6 +34,7 @@ namespace CalendarsTester
             viewProvider.Register<EventsViewModel, EventsPage>();
             viewProvider.Register<EventEditorViewModel, EventEditorPage>();
             viewProvider.Register<ReminderEditorViewModel, ReminderEditorPage>();
+            viewProvider.Register<RemindersViewModel, RemindersPage>();
         }
 
         #region Lifecycle stuff
