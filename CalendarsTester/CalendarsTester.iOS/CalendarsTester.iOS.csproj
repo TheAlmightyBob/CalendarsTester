@@ -149,11 +149,11 @@
       <HintPath>..\..\packages\BTProgressHUD.1.2.0.3\lib\Xamarin.iOS10\BTProgressHUD.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Plugin.Calendars, Version=0.7.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\CClarke.Plugin.Calendars.0.7.1-beta\lib\Xamarin.iOS10\Plugin.Calendars.dll</HintPath>
+    <Reference Include="Plugin.Calendars, Version=0.7.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\CClarke.Plugin.Calendars.0.7.7-beta\lib\Xamarin.iOS10\Plugin.Calendars.dll</HintPath>
     </Reference>
-    <Reference Include="Plugin.Calendars.Abstractions, Version=0.7.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\CClarke.Plugin.Calendars.0.7.1-beta\lib\Xamarin.iOS10\Plugin.Calendars.Abstractions.dll</HintPath>
+    <Reference Include="Plugin.Calendars.Abstractions, Version=0.7.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\CClarke.Plugin.Calendars.0.7.7-beta\lib\Xamarin.iOS10\Plugin.Calendars.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="Splat, Version=1.6.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Splat.1.6.2\lib\Xamarin.iOS10\Splat.dll</HintPath>
