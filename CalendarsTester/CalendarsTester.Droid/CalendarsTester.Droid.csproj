@@ -16,8 +16,7 @@
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
-    <AndroidUseLatestPlatformSdk>true</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
     <AndroidSupportedAbis>armeabi,armeabi-v7a,x86</AndroidSupportedAbis>
     <AndroidStoreUncompressedFileExtensions />
     <MandroidI18n />
@@ -76,11 +75,11 @@
     </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
-    <Reference Include="Plugin.Calendars, Version=0.7.7.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\CClarke.Plugin.Calendars.0.7.7-beta\lib\MonoAndroid10\Plugin.Calendars.dll</HintPath>
+    <Reference Include="Plugin.Calendars, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\CClarke.Plugin.Calendars.1.0.0\lib\MonoAndroid10\Plugin.Calendars.dll</HintPath>
     </Reference>
-    <Reference Include="Plugin.Calendars.Abstractions, Version=0.7.7.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\CClarke.Plugin.Calendars.0.7.7-beta\lib\MonoAndroid10\Plugin.Calendars.Abstractions.dll</HintPath>
+    <Reference Include="Plugin.Calendars.Abstractions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\CClarke.Plugin.Calendars.1.0.0\lib\MonoAndroid10\Plugin.Calendars.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="Splat, Version=1.6.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Splat.1.6.2\lib\monoandroid\Splat.dll</HintPath>
